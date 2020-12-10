@@ -15,6 +15,73 @@
             <div class="contact-details">
                 <h3>Contact Details</h3>
                 <div class="row">
+                    
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="salutation-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-api" name="salutation-scrm-api" value="Salutation" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-field" name="salutation-scrm-field" value="Salutation" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-desc" name="salutation-scrm-desc" value="Salutation" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-datatype" name="salutation-scrm-datatype" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-picklist"><strong>SCRM Picklist Values:</strong></label>
+                            <% var array = ["Mr.","Ms.","Mrs.","Mx.","Dr.","Prof.","Capt.","CDr.","Col.","FatherGen.","Gov.","Hon.","JudgeJusticeMaj.","MissRabbiRep.","Rev.","Sen.","PastorSr."] %>
+                            <ul class="picklist">
+                                <% for (var i = 0; i < array.length; i++) { %>
+                                    <li class="list">
+                                        <label for="salutation-scrm-picklist-values"><strong><%= array[i] %></strong></label>
+                                        <input type="text" class="col-xs-2" name="salutation-scrm-picklist-value">
+                                    </li>
+                                <% } %>
+
+                            </ul>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="salutation-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="salutation-entity" id="salutation-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="salutation-displayName" name="salutation-displayName" placeholder="Ex: First name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="salutation-FieldName" placeholder="Ex: sl_honorific">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="salutation-dataType" placeholder="Ex:">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
                     <div class="col-sm-12 col-md-6">
                         <h5>
                             <div class="form-group">
