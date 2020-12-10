@@ -46,7 +46,7 @@
                                 <% for (var i = 0; i < array.length; i++) { %>
                                     <li class="list">
                                         <label for="salutation-scrm-picklist-values"><strong><%= array[i] %></strong></label>
-                                        <input type="text" class="col-xs-2" name="salutation-scrm-picklist-value">
+                                        <input type="text" class="col-xs-2" name="salutation-scrm-picklist-value_<%=i+1%>">
                                     </li>
                                 <% } %>
 
