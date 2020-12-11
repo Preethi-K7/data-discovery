@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>SCRM Project</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="scrm_contact" method="post" action="/contactPost">
+            <div class="contact-details">
+                <h3>Contact Details</h3>
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="salutation-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-api" name="salutation-scrm-api" value="Salutation" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-field" name="salutation-scrm-field" value="Salutation" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-desc" name="salutation-scrm-desc" value="Salutation" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="salutation-scrm-datatype" name="salutation-scrm-datatype" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-scrm-picklist"><strong>SCRM Picklist Values:</strong></label>
+                            <ul class="picklist">
+                                {% for ar in array %}
+                                <li class="list">
+                                    <label for="salutation-entity-picklist-values"><strong>{{ ar }}</strong></label>
+                                    <input type="text" class="col-xs-2" name="salutation-entity-picklist-value_{{loop.index}}">
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="salutation-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="salutation-entity" id="salutation-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="salutation-displayName" name="salutation-displayName" placeholder="Ex: First name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="salutation-FieldName" placeholder="Ex: sl_honorific">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salutation">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="salutation-dataType" placeholder="Ex:">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="firstname-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="firstname-scrm-api" name="firstname-scrm-api" value="FirstName" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="firstname-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="firstname-scrm-field" name="firstname-scrm-field" value="First Name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="firstname-scrm-desc" name="firstname-scrm-desc" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="firstname-scrm-datatype" name="firstname-scrm-datatype" value="Text(40)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="firstname-entity" id="firstname-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="firstname-displayName" name="firstname-displayName" placeholder="Ex: First name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="firstname-FieldName" placeholder="Ex: firstname">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="firstname-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="middlename-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="middlename-scrm-api" name="middlename-scrm-api" value="Middlename" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="middlename-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="middlename-scrm-field" name="middlename-scrm-field" value="Middle Name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="middlename-scrm-desc" name="middlename-scrm-desc" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="middlename-scrm-datatype" name="middlename-scrm-datatype" value="Text(40)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="middlename-entity" id="middlename-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="middlename-displayName" name="middlename-displayName" placeholder="Ex:  Middle name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="middlename-FieldName" placeholder="Ex: middlename">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middlename">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="middlename-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="lastname-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="lastname-scrm-api" name="lastname-scrm-api" value="Lastname" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="lastname-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="lastname-scrm-field" name="lastname-scrm-field" value="Last Name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="lastname-scrm-desc" name="lastname-scrm-desc" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="lastname-scrm-datatype" name="lastname-scrm-datatype" value="Text(80)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="lastname-entity" id="lastname-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="lastname-displayName" name="lastname-displayName" placeholder="Ex: Last name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="lastname-FieldName" placeholder="Ex: lastname">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="lastname-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="suffix-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="suffix-scrm-api" name="suffix-scrm-api" value="Suffix" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="suffix-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="suffix-scrm-field" name="suffix-scrm-field" value="Suffix" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="suffix-scrm-desc" name="suffix-scrm-desc" value="Contact name field" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="suffix-scrm-datatype" name="suffix-scrm-datatype" value="Text(40)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="suffix-entity" id="suffix-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="suffix-displayName" name="suffix-displayName" placeholder="Ex: Suffix">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="suffix-FieldName" placeholder="Ex: suffix">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="suffix-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="nickname-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="nickname-scrm-api" name="nickname-scrm-api" value="acu_Nickname__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="nickname-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="nickname-scrm-field" name="nickname-scrm-field" value="Nickname" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="nickname-scrm-desc" name="nickname-scrm-desc" value="Donor's preferred first name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="nickname-scrm-datatype" name="nickname-scrm-datatype" value="Text(40)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="nickname-entity" id="nickname-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="nickname-displayName" name="nickname-displayName" placeholder="Ex: Nickname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="nickname-FieldName" placeholder="Ex: nickname">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="nickname-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="public_recognition-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="public_recognition-scrm-api" name="public_recognition-scrm-api" value="Name_for_Public_Recognition__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="public_recognition-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="public_recognition-scrm-field" name="public_recognition-scrm-field" value="Name for Public Recognition" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="public_recognition-scrm-desc" name="public_recognition-scrm-desc" value="Full name to be used in acknowledgement and published materials about this person" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="public_recognition-scrm-datatype" name="public_recognition-scrm-datatype" value="Text(250)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="public_recognition-entity" id="public_recognition-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="public_recognition-displayName" name="public_recognition-displayName" placeholder="Ex: Leadership Recognition Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="public_recognition-FieldName" placeholder="Ex: upic_LeadershipRecognitionName">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_recognition">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="public_recognition-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="luw_contact_mgr-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="luw_contact_mgr-scrm-api" name="luw_contact_mgr-scrm-api" value="LUW_Contact_Manager__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="luw_contact_mgr-scrm-field" name="luw_contact_mgr-scrm-field" value="LUW Contact Manager" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="luw_contact_mgr-scrm-desc" name="luw_contact_mgr-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="luw_contact_mgr-scrm-datatype" name="luw_contact_mgr-scrm-datatype" value="Lookup (User)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="luw_contact_mgr-entity" id="luw_contact_mgr-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="luw_contact_mgr-displayName" name="luw_contact_mgr-displayName" placeholder="Ex: Owner">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="luw_contact_mgr-FieldName" placeholder="Ex: ownerid">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luw_contact_mgr">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="luw_contact_mgr-dataType" placeholder="Ex: User list lookup">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr style="border: 1px solid red;">
+
+
+            <div class="demographic-information">
+                <h3>Demographic Information</h3>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="ethnicity-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="ethnicity-scrm-api" name="ethnicity-scrm-api" value="Ethnicity__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="ethnicity-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="ethnicity-scrm-field" name="ethnicity-scrm-field" value="Hispanic, Latino or Spanish Origin" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="ethnicity-scrm-desc" name="ethnicity-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="ethnicity-scrm-datatype" name="ethnicity-scrm-datatype" value="Check box" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="ethnicity-entity" id="ethnicity-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="ethnicity-displayName" name="ethnicity-displayName" placeholder="Ex: Ethnicity">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="ethnicity-FieldName" placeholder="Ex: SL_Ethnicity">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="ethnicity-dataType" placeholder="Ex: picklist">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="other_race-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="other_race-scrm-api" name="other_race-scrm-api" value="Other_Race_Description__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="other_race-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_race-scrm-field" name="other_race-scrm-field" value="Other Race Description" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_race-scrm-desc" name="other_race-scrm-desc" value="If Race is selected as 'Other', more details can be provided here" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_race-scrm-datatype" name="other_race-scrm-datatype" value="Text(250)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="other_race-entity" id="other_race-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="other_race-displayName" name="other_race-displayName" placeholder="Ex: Ethnicity">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="other_race-FieldName" placeholder="Ex: SL_Ethnicity">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_race">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="other_race-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="other_gender-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="other_gender-scrm-api" name="other_gender-scrm-api" value="Other_Gender__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="other_gender-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_gender-scrm-field" name="other_gender-scrm-field" value="Other Gender" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_gender-scrm-desc" name="other_gender-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="other_gender-scrm-datatype" name="other_gender-scrm-datatype" value="Text(100)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="other_gender-entity" id="other_gender-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="other_gender-displayName" name="other_gender-displayName" placeholder="Ex: Gender">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="other_gender-FieldName" placeholder="Ex: gendercode">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_gender">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="other_gender-dataType" placeholder="Ex: text">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="birthdate-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="birthdate-scrm-api" name="birthdate-scrm-api" value="birthdate" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="birthdate-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birthdate-scrm-field" name="birthdate-scrm-field" value="Birthdate" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birthdate-scrm-desc" name="birthdate-scrm-desc" value="Date of birth of the contact" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birthdate-scrm-datatype" name="birthdate-scrm-datatype" value="Date" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="birthdate-entity" id="birthdate-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="birthdate-displayName" name="birthdate-displayName" placeholder="Ex: Birthdate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="birthdate-FieldName" placeholder="Ex: birthdate">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="birthdate-dataType" placeholder="Ex: date">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="birth_day-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="birth_day-scrm-api" name="birth_day-scrm-api" value="Birth_Day_DD__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="birth_day-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_day-scrm-field" name="birth_day-scrm-field" value="Birth Day (DD)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_day-scrm-desc" name="birth_day-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_day-scrm-datatype" name="birth_day-scrm-datatype" value="Text(2)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="birth_day-entity" id="birth_day-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="birth_day-displayName" name="birth_day-displayName" placeholder="Ex: Birth Day of Month">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="birth_day-FieldName" placeholder="Ex: sl_birthdayofmonth">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_day">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="birth_day-dataType" placeholder="Ex: whole number">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="birth_month-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="birth_month-scrm-api" name="birth_month-scrm-api" value="Birth_Month_MM__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="birth_month-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_month-scrm-field" name="birth_month-scrm-field" value="Birth Month (MM)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_month-scrm-desc" name="birth_month-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_month-scrm-datatype" name="birth_month-scrm-datatype" value="Text(2)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="birth_month-entity" id="birth_month-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="birth_month-displayName" name="birth_month-displayName" placeholder="Ex: Birth Month">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="birth_month-FieldName" placeholder="Ex: sl_birthmonth">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_month">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="birth_month-dataType" placeholder="Ex: option set">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="birth_year-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="birth_year-scrm-api" name="birth_year-scrm-api" value="Birth_Year_YYYY__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="birth_year-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_year-scrm-field" name="birth_year-scrm-field" value="Birth Year (YYYY)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_year-scrm-desc" name="birth_year-scrm-desc" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="birth_year-scrm-datatype" name="birth_year-scrm-datatype" value="Text(4)" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="birth_year-entity" id="birth_year-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="birth_year-displayName" name="birth_year-displayName" placeholder="Ex: Birth Year">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="birth_year-FieldName" placeholder="Ex: sl_birthyear">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_year">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="birth_year-dataType" placeholder="Ex: whole number">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6">
+                        <h5>
+                            <div class="form-group">
+                                <label for="npsp_Deceased-scrm-api"><strong>SCRM API Name:</strong></label>
+                                <input type="text" class="col-xs-2 form-control-plaintext" id="npsp_Deceased-scrm-api" name="npsp_Deceased-scrm-api" value="npsp__Deceased__c" readonly>
+                            </div>
+                        </h5>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased-scrm-field"><strong>SCRM Field Name:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="npsp_Deceased-scrm-field" name="npsp_Deceased-scrm-field" value="Deceased" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased-scrm-desc"><strong>Description</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="npsp_Deceased-scrm-desc" name="npsp_Deceased-scrm-desc" value="Indicates the Contact is deceased." readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased-scrm-datatype"><strong>SCRM Data Type:</strong></label>
+                            <input type="text" class="col-xs-2 form-control-plaintext" id="npsp_Deceased-scrm-datatype" name="npsp_Deceased-scrm-datatype" value="Checkbox" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased-entity">UnityTech Entity:</label>
+                            <input type="text" class="col-xs-2" name="npsp_Deceased-entity" id="npsp_Deceased-entity" placeholder="Ex: Contact">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased-displayName">UnityTech Field - Display Name:</label>
+                            <input type="text" class="col-xs-2" id="npsp_Deceased-displayName" name="npsp_Deceased-displayName" placeholder="Ex: Deceased">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased">UnityTech Field - Name:</label>
+                            <input type="text" class="col-xs-2" name="npsp_Deceased-FieldName" placeholder="Ex: sl_isdeceased">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npsp_Deceased">UnityTech Data Type:</label>
+                            <input type="text" class="col-xs-2" name="npsp_Deceased-dataType" placeholder="Ex: two options">
+                            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: 1px solid red;">
+
+
+
+            <div>
+                <input style="margin-bottom: 20px;" type="submit" name="submit" value="Submit" />
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
