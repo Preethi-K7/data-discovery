@@ -1,0 +1,11 @@
+label {
+    /* Other styling... */
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
+.contact-details{
+    padding: 10px;
+}
